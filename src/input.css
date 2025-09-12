@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-matangi: "Matangi", "sans-serif";
+  --color-primary: #000000;
+  --color-secondary: #ff4d05;
+  --color-text: #ffffff;
+}
