@@ -51,61 +51,81 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 showSkills();
 // Blog Section
 window.showBloggerPosts = function (data) {
-  const posts = data.feed.entry || [];
-  let html = "";
+  const posts = (data.feed.entry || []).reverse(); // newest first
+  let currentIndex = 0;
+  const postsPerPage = 3;
 
-  posts.forEach((post) => {
-    const title = post.title.$t;
-    const link = post.link.find((l) => l.rel === "alternate").href;
-    const content = post.content?.$t || "";
+  function renderPosts() {
+    let html = "";
+    const visiblePosts = posts.slice(currentIndex, currentIndex + postsPerPage);
 
-    // Image
-    // Image
-    let imageUrl = post.media$thumbnail?.url;
-    if (imageUrl) {
-      // Replace any Blogger size pattern with s1600 for highest quality
-      imageUrl = imageUrl.replace(/s\d{2,4}(-c)?/, "s1600");
-    } else {
-      const imgMatch = content.match(/<img.*?src=\"(.*?)\"/);
-      if (imgMatch) {
-        imageUrl = imgMatch[1]; // usually full quality already
+    visiblePosts.forEach((post) => {
+      const title = post.title.$t;
+      const link = post.link.find((l) => l.rel === "alternate").href;
+      const content = post.content?.$t || "";
+
+      // Image
+      let imageUrl = post.media$thumbnail?.url;
+      if (imageUrl) {
+        imageUrl = imageUrl.replace(/s\d{2,4}(-c)?/, "s1600");
+      } else {
+        const imgMatch = content.match(/<img.*?src=\"(.*?)\"/);
+        if (imgMatch) imageUrl = imgMatch[1];
       }
+
+      const author = post.author?.[0]?.name?.$t || "Unknown Author";
+      const publishedDate = new Date(post.published.$t).toDateString();
+
+      html += `
+        <article class="shadow-lg h-full w-1/4 space-y-3 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right">
+          ${imageUrl ? `<img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />` : ""}
+          <h1 class="my-6 font-serif text-2xl font-extrabold tracking-wide text-white capitalize">
+            <a href="${link}" target="_blank">${title}</a>
+          </h1>
+          <p class="line-clamp-3 text-sm text-ellipsis text-white">
+            ${content.replace(/<[^>]+>/g, "").substring(0, 150)}...
+          </p>
+          <div class="flex content-end flex-row-reverse items-center gap-x-3">
+            <div class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+              <span class="font-medium text-gray-600 dark:text-gray-300">${author[0] || "?"}</span>
+            </div>
+            <div class="text-secondary">
+              <h2 class="text-lg font-semibold">${author}</h2>
+              <h4 class="text-xs">Posted on ${publishedDate}</h4>
+            </div>
+          </div>
+        </article>
+      `;
+    });
+
+    document.getElementById("blog-posts").innerHTML = html;
+
+    // Enable/disable arrows
+    document.getElementById("blogPrevBtn").disabled = currentIndex <= 0;
+    document.getElementById("blogNextBtn").disabled =
+      currentIndex + postsPerPage >= posts.length;
+  }
+
+  // Button actions
+  document.getElementById("blogPrevBtn").onclick = function () {
+    if (currentIndex - postsPerPage >= 0) {
+      currentIndex -= postsPerPage;
+    } else {
+      currentIndex = 0;
     }
+    renderPosts();
+  };
 
-    // Author & Date
-    const author = post.author?.[0]?.name?.$t || "Unknown Author";
-    const publishedDate = new Date(post.published.$t).toDateString();
+  document.getElementById("blogNextBtn").onclick = function () {
+    if (currentIndex + postsPerPage < posts.length) {
+      currentIndex += postsPerPage;
+    } else {
+      currentIndex = posts.length - postsPerPage;
+      if (currentIndex < 0) currentIndex = 0;
+    }
+    renderPosts();
+  };
 
-    html += `
-      <article
-        class="shadow-lg h-full w-1/4 space-y-3 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
-      >
-        ${imageUrl ? `<img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />` : ""}
-        
-        <h1 class="my-6 font-serif text-2xl font-extrabold tracking-wide text-white capitalize">
-          <a href="${link}" target="_blank">${title}</a>
-        </h1>
-
-        <p class="line-clamp-3 text-sm text-ellipsis text-white">
-          ${content.replace(/<[^>]+>/g, "").substring(0, 150)}...
-        </p>
-
-        <div class="flex content-end flex-row-reverse items-center gap-x-3">
-          <div
-            class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
-          >
-            <span class="font-medium text-gray-600 dark:text-gray-300">
-              ${author[0] || "?"}
-            </span>
-          </div>
-          <div class="text-secondary">
-            <h2 class="text-lg font-semibold">${author}</h2>
-            <h4 class="text-xs">Posted on ${publishedDate}</h4>
-          </div>
-        </div>
-      </article>
-    `;
-  });
-
-  document.getElementById("blog-posts").innerHTML = html;
+  // Initial render
+  renderPosts();
 };
