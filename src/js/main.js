@@ -76,25 +76,39 @@ window.showBloggerPosts = function (data) {
       const author = post.author?.[0]?.name?.$t || "Unknown Author";
       const publishedDate = new Date(post.published.$t).toDateString();
 
-      html += `
-        <article class="shadow-lg h-full w-1/4 space-y-3 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right">
-          ${imageUrl ? `<img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />` : ""}
-          <h1 class="my-6 font-serif text-2xl font-extrabold tracking-wide text-white capitalize">
-            <a href="${link}" target="_blank">${title}</a>
-          </h1>
-          <p class="line-clamp-3 text-sm text-ellipsis text-white">
-            ${content.replace(/<[^>]+>/g, "").substring(0, 150)}...
-          </p>
-          <div class="flex content-end flex-row-reverse items-center gap-x-3">
-            <div class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-              <span class="font-medium text-gray-600 dark:text-gray-300">${author[0] || "?"}</span>
-            </div>
-            <div class="text-secondary">
-              <h2 class="text-lg font-semibold">${author}</h2>
-              <h4 class="text-xs">Posted on ${publishedDate}</h4>
-            </div>
-          </div>
-        </article>
+      html += `<a href="${link}" target="_blank">
+        <article
+  class="shadow-lg flex flex-col h-[500px] w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
+>
+  <!-- image -->
+  <img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />
+
+  <!-- title -->
+  <h1
+    class="my-6 font-serif text-2xl font-extrabold tracking-wide text-white capitalize"
+  >
+    <a href="${link}" target="_blank">${title}</a>
+  </h1>
+
+  <!-- excerpt -->
+  <p class="line-clamp-3 text-sm text-ellipsis text-white">
+    ${content.replace(/<[^>]+>/g, "").substring(0, 150)}...
+  </p>
+
+  <!-- author section pinned at bottom -->
+  <div class="flex flex-row-reverse items-center gap-x-3 mt-auto">
+    <div
+      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
+    >
+      <span class="font-medium text-gray-600 dark:text-gray-300">${author[0] || "?"}</span>
+    </div>
+    <div class="text-secondary">
+      <h2 class="text-lg font-semibold">${author}</h2>
+      <h4 class="text-xs">Posted on ${publishedDate}</h4>
+    </div>
+  </div>
+</article>
+</a>
       `;
     });
 

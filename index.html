@@ -131,7 +131,7 @@
     <!-- Page Content -->
     <main class="pt-24">
       <!-- Hero Section -->
-      <section class="bg-white px-6 py-16">
+      <section id="about-me" class="scroll-mt-20 bg-white px-6 py-16">
         <div class="mx-auto max-w-6xl text-center">
           <h1 class="mb-6 text-4xl font-bold md:text-5xl">
             Hello, I'm <span class="text-secondary">Saleh Blhmr</span>
@@ -203,7 +203,7 @@
       </div>
     </main>
     <!-- Skills section -->
-    <section id="skills" class="bg-gray-900 px-4 py-16 text-white">
+    <section id="skills" class="scroll-mt-10 bg-gray-900 px-4 py-16 text-white">
       <h2 class="mb-12 text-center text-4xl font-bold">My Skills</h2>
       <div class="relative mx-auto max-w-5xl">
         <!-- Skill wrapper -->
@@ -407,7 +407,10 @@
       </div>
     </section>
     <!-- Projects section -->
-    <div class="flex flex-col items-center justify-center space-y-3.5 py-6">
+    <div
+      id="projects"
+      class="flex scroll-mt-10 flex-col items-center justify-center space-y-3.5 py-6"
+    >
       <h1
         class="font-matangi my-7 text-center text-4xl font-bold text-gray-800 capitalize"
       >
@@ -427,7 +430,8 @@
     <!-- End of Skills section -->
     <!-- Blog section -->
     <div
-      class="relative mt-1.5 flex flex-col bg-[url('/src/assets/9019808.jpg')]"
+      id="blog"
+      class="relative mt-1.5 flex scroll-mt-20 flex-col bg-[url('/src/assets/9019808.jpg')]"
     >
       <h1
         class="font-matangi my-7 text-center text-4xl font-bold text-white capitalize"
@@ -437,12 +441,26 @@
 
       <div class="relative flex items-center">
         <!-- Prev Button (left side of posts container) -->
-        <button
+        <div
           id="blogPrevBtn"
-          class="absolute top-1/2 left-0 z-20 -translate-y-1/2 rounded-full bg-white/30 p-4 text-3xl font-bold text-white shadow-lg transition hover:bg-white/50 disabled:cursor-not-allowed disabled:opacity-30"
+          class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
         >
-          &#8592;
-        </button>
+          <svg
+            class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="{1.5}"
+            stroke="currentColor"
+            className="size-10 "
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+            />
+          </svg>
+        </div>
 
         <!-- Posts container -->
         <ul
@@ -451,16 +469,100 @@
         ></ul>
 
         <!-- Next Button (right side of posts container) -->
-        <button
+        <div
           id="blogNextBtn"
-          class="absolute top-1/2 right-0 z-20 -translate-y-1/2 rounded-full bg-white/30 p-4 text-3xl font-bold text-white shadow-lg transition hover:bg-white/50 disabled:cursor-not-allowed disabled:opacity-30"
+          class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
         >
-          &#8594;
-        </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokewidth="{1.5}"
+            stroke="currentColor"
+            classname="size-6"
+            class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
+          >
+            <path
+              strokelinecap="round"
+              strokelinejoin="round"
+              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+            ></path>
+          </svg>
+        </div>
       </div>
     </div>
-
     <!-- End of Blog Section -->
+
+    <!-- Contact me Section -->
+    <section
+      id="contact-me"
+      class="flex h-[500px] w-full scroll-mt-10 flex-col items-center text-gray-800"
+    >
+      <!-- Centered heading -->
+      <h1 class="mt-7 mb-8 w-full text-center text-4xl font-bold">
+        Contact Me
+      </h1>
+      <!-- Two-column layout -->
+      <div class="flex w-4/5 max-w-5xl flex-1 gap-8">
+        <!-- Left column: WhatsApp + QR -->
+        <div class="flex w-1/2 flex-col justify-start">
+          <!-- WhatsApp number container -->
+          <div class="mb-8 flex w-full rounded-2xl bg-green-500">
+            <div class="h-full w-1/4">
+              <img
+                class="h-full w-full"
+                src="/src/assets/icons8-whatsapp.svg"
+                alt=""
+              />
+            </div>
+            <p class="ml-5 self-center text-4xl font-bold">+966 570121551</p>
+          </div>
+          <!-- QR code container -->
+          <div class="w-1/2">
+            <img
+              src="/src/assets/shared_qr_code.png"
+              alt=""
+              class="h-auto w-full"
+            />
+          </div>
+        </div>
+        <!-- Right column: Amber container -->
+        <section class="h-full w-1/2 rounded-2xl">
+          <ul class="flex h-full w-full justify-between">
+            <li
+              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+            >
+              <img
+                src="/src/assets/github-142-svgrepo-com.svg"
+                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                alt="GitHub Logo"
+              />
+            </li>
+
+            <li
+              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+            >
+              <img
+                src="/src/assets/linkedin-round-svgrepo-com.svg"
+                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                alt=""
+              />
+            </li>
+            <li
+              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+            >
+              <img
+                src="/src/assets/email-svgrepo-com.svg"
+                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                alt=""
+              />
+            </li>
+          </ul>
+        </section>
+      </div>
+    </section>
+    <!-- End of Contact me Section -->
+
     <!-- Footer -->
     <footer class="bg-gray-800 px-6 py-8 text-white">
       <div class="mx-auto max-w-6xl text-center">
