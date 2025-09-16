@@ -143,3 +143,8 @@ window.showBloggerPosts = function (data) {
   // Initial render
   renderPosts();
 };
+
+// Footer
+const currentYear = new Date().getFullYear();
+
+document.getElementById("current-year").textContent = currentYear;

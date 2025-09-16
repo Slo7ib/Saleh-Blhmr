@@ -507,29 +507,42 @@
         <!-- Left column: WhatsApp + QR -->
         <div class="flex w-1/2 flex-col justify-start">
           <!-- WhatsApp number container -->
-          <div class="mb-8 flex w-full rounded-2xl bg-green-500">
+          <a
+            href="https://wa.me/qr/4XE3XLHDUFEDC1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mb-8 flex w-full rounded-2xl bg-green-500 transition-colors duration-300 hover:bg-green-600"
+          >
             <div class="h-full w-1/4">
               <img
                 class="h-full w-full"
                 src="/src/assets/icons8-whatsapp.svg"
-                alt=""
+                alt="WhatsApp"
               />
             </div>
-            <p class="ml-5 self-center text-4xl font-bold">+966 570121551</p>
-          </div>
+            <p class="ml-5 self-center text-4xl font-bold text-white">
+              +966 570121551
+            </p>
+          </a>
+
           <!-- QR code container -->
           <div class="w-1/2">
             <img
               src="/src/assets/shared_qr_code.png"
-              alt=""
+              alt="QR Code"
               class="h-auto w-full"
             />
           </div>
         </div>
-        <!-- Right column: Amber container -->
+
+        <!-- Right column: Social Media -->
         <section class="h-full w-1/2 rounded-2xl">
           <ul class="flex h-full w-full justify-between">
-            <li
+            <!-- GitHub -->
+            <a
+              href="https://github.com/Slo7ib"
+              target="_blank"
+              rel="noopener noreferrer"
               class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
             >
               <img
@@ -537,36 +550,47 @@
                 class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
                 alt="GitHub Logo"
               />
-            </li>
+            </a>
 
-            <li
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/saleh-blhmr-2753951a1/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
             >
               <img
                 src="/src/assets/linkedin-round-svgrepo-com.svg"
                 class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
-                alt=""
+                alt="LinkedIn Logo"
               />
-            </li>
-            <li
+            </a>
+
+            <!-- Email -->
+            <a
+              href="mailto:slo7ib@hotmail.com"
               class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
             >
               <img
                 src="/src/assets/email-svgrepo-com.svg"
                 class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
-                alt=""
+                alt="Email Logo"
               />
-            </li>
+            </a>
           </ul>
         </section>
       </div>
     </section>
+
     <!-- End of Contact me Section -->
 
     <!-- Footer -->
     <footer class="bg-gray-800 px-6 py-8 text-white">
       <div class="mx-auto max-w-6xl text-center">
-        <p>&copy; 2023 Portfolio. All rights reserved.</p>
+        <p>
+          &copy; <span id="current-year"></span> Made by Saleh Blhmr. All rights
+          reserved.
+        </p>
       </div>
     </footer>
 
