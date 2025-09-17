@@ -148,3 +148,92 @@ window.showBloggerPosts = function (data) {
 const currentYear = new Date().getFullYear();
 
 document.getElementById("current-year").textContent = currentYear;
+
+// Language switcher
+const ar = {
+  "nav-home": "الرئيسية",
+  "nav-about": "من أنا",
+  "nav-skills": "المهارات",
+  "nav-portfolio": "المشاريع",
+  "nav-contact": "تواصل معي",
+  "hero-title": "مرحبًا بكم في موقعي",
+  "hero-subtitle": "أنا مطور ويب بدوام كامل",
+  "about-title": "من أنا",
+  "about-content":
+    "أنا مطور ويب متحمس أعيش في [مدينتك، دولتك]. أتمتع بمهارات قوية في [مجالات خبرتك] ولدي شغف بإنشاء حلول ويب مبتكرة.",
+  "skills-title": "المهارات",
+  "portfolio-title": "المشاريع",
+  "contact-title": "تواصل معي",
+  "footer-copyright": "جميع الحقوق محفوظة © [اسمك]",
+};
+
+const en = {
+  "nav-home": "Home",
+  "nav-about": "About",
+  "nav-skills": "Skills",
+  "nav-portfolio": "Portfolio",
+  "nav-contact": "Contact",
+  "hero-title": "Welcome to My Website",
+  "hero-subtitle": "I am a Full Stack Developer",
+  "about-title": "About Me",
+  "about-content":
+    "I am an enthusiastic web developer based in [Your City, Your Country]. I have strong skills in [Your Expertise] and a passion for creating innovative web solutions.",
+  "skills-title": "My Skills",
+  "portfolio-title": "My Projects",
+  "contact-title": "Get in Touch",
+  "footer-copyright": "All rights reserved © [Your Name]",
+};
+
+function setLanguage(lang) {
+  const elements = document.querySelectorAll("[data-i18n]");
+  elements.forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    el.textContent = lang[key] || key;
+  });
+
+  // Update HTML tag for directionality
+  document.documentElement.setAttribute("lang", lang === ar ? "ar" : "en");
+  document.documentElement.setAttribute("dir", lang === ar ? "rtl" : "ltr");
+}
+
+// Initial language set
+setLanguage(en);
+
+// Language switcher event
+document.getElementById("language-selector").addEventListener("change", (e) => {
+  const lang = e.target.value === "ar" ? ar : en;
+  setLanguage(lang);
+});
+
+// Dynamic content translation (e.g., blog posts) - expand as needed
+function translateContent(lang) {
+  const posts = document.querySelectorAll("#blog-posts article");
+  posts.forEach((post) => {
+    const titleEl = post.querySelector("h1 a");
+    const contentEl = post.querySelector("p");
+    const authorEl = post.querySelector("h2");
+    const dateEl = post.querySelector("h4");
+
+    // Simple translation logic - expand with your translation data
+    if (lang === ar) {
+      titleEl.textContent = titleEl.getAttribute("data-ar-title");
+      contentEl.textContent = contentEl.getAttribute("data-ar-content");
+      authorEl.textContent = authorEl.getAttribute("data-ar-author");
+      dateEl.textContent = dateEl.getAttribute("data-ar-date");
+    } else {
+      titleEl.textContent = titleEl.getAttribute("data-en-title");
+      contentEl.textContent = contentEl.getAttribute("data-en-content");
+      authorEl.textContent = authorEl.getAttribute("data-en-author");
+      dateEl.textContent = dateEl.getAttribute("data-en-date");
+    }
+  });
+}
+
+// Call this function after rendering posts
+renderPosts = ((origRender) => {
+  return function () {
+    origRender();
+    const lang = document.getElementById("language-selector").value;
+    translateContent(lang === "ar" ? ar : en);
+  };
+})(renderPosts);

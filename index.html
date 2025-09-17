@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,66 +11,119 @@
     >
       <div class="ml-7 font-bold">
         <div class="flex items-center">
-          <span class="font-mono text-3xl font-black tracking-wider uppercase"
-            >Saleh Blhmr</span
+          <a href=".">
+            <span
+              class="mr-4 font-mono text-3xl font-black tracking-wider uppercase"
+              >Saleh Blhmr</span
+            ></a
           >
         </div>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="bg-primary mr-16 hidden md:block">
-        <ul class="font-matangi flex space-x-24">
+      <nav class="bg-primary mr-16 hidden items-center md:flex">
+        <ul class="font-matangi flex space-x-24" id="nav-en">
           <li
-            class="hover:bg-secondary transform p-3 transition-all duration-300 hover:scale-110 hover:rounded-3xl"
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
           >
             <a
               href="#about-me"
-              class="nav-hover-effect text-text text-sm transition-colors duration-300 hover:text-white"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >About Me</a
             >
-              About Me
-            </a>
           </li>
           <li
-            class="hover:bg-secondary transform p-3 transition-all duration-300 hover:scale-110 hover:rounded-3xl"
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
           >
             <a
               href="#skills"
-              class="nav-hover-effect text-text text-sm transition-colors duration-300 hover:text-white"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >Skills</a
             >
-              Skills
-            </a>
           </li>
           <li
-            class="hover:bg-secondary transform p-3 transition-all duration-300 hover:scale-110 hover:rounded-3xl"
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
           >
             <a
               href="#projects"
-              class="nav-hover-effect text-text text-sm transition-colors duration-300 hover:text-white"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >Projects</a
             >
-              Projects
-            </a>
           </li>
           <li
-            class="hover:bg-secondary transform p-3 transition-all duration-300 hover:scale-110 hover:rounded-3xl"
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
           >
             <a
               href="#blog"
-              class="nav-hover-effect text-text text-sm transition-colors duration-300 hover:text-white"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >Blog</a
             >
-              Blog
-            </a>
           </li>
           <li
-            class="hover:bg-secondary transform p-3 transition-all duration-300 hover:scale-110 hover:rounded-3xl"
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-125"
           >
             <a
               href="#contact-me"
-              class="nav-hover-effect text-text text-sm transition-colors duration-300 hover:text-white"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >Contact Me</a
             >
-              Contact Me
-            </a>
           </li>
         </ul>
+        <ul class="font-matangi ml-7 flex hidden space-x-24" id="nav-ar">
+          <li
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
+          >
+            <a
+              href="#about-me"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >عنّي</a
+            >
+          </li>
+          <li
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
+          >
+            <a
+              href="#skills"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >المهارات</a
+            >
+          </li>
+          <li
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
+          >
+            <a
+              href="#projects"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >المشاريع</a
+            >
+          </li>
+          <li
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-200"
+          >
+            <a
+              href="#blog"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >المدونة</a
+            >
+          </li>
+          <li
+            class="hover:bg-secondary transform rounded-xl transition duration-300 hover:scale-125"
+          >
+            <a
+              href="#contact-me"
+              class="nav-hover-effect text-text hover:text-primary p-2 text-sm"
+              >تواصل معي</a
+            >
+          </li>
+        </ul>
+        <!-- Language selector -->
+        <select
+          id="lang-selector"
+          class="border-primary bg-secondary ml-8 size-12 rounded-lg border px-1.5 py-0 text-black"
+        >
+          <option value="en" selected>En</option>
+          <option value="ar">Ar</option>
+        </select>
       </nav>
 
       <!-- Mobile menu button -->
@@ -84,46 +137,81 @@
       id="mobile-menu"
       class="mobile-menu pointer-events-none fixed top-20 left-0 z-40 w-full bg-white py-4 opacity-0 shadow-lg"
     >
-      <ul class="font-matangi flex flex-col space-y-4 px-6">
+      <ul class="font-matangi flex flex-col space-y-4 px-6" id="mobile-nav-en">
         <li>
           <a
             href="#about-me"
             class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >About Me</a
           >
-            About Me
-          </a>
         </li>
         <li>
           <a
             href="#skills"
             class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >Skills</a
           >
-            Skills
-          </a>
         </li>
         <li>
           <a
             href="#projects"
             class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >Projects</a
           >
-            Projects
-          </a>
         </li>
         <li>
           <a
             href="#blog"
             class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >Blog</a
           >
-            Blog
-          </a>
         </li>
         <li>
           <a
             href="#contact-me"
             class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >Contact Me</a
           >
-            Contact Me
-          </a>
+        </li>
+      </ul>
+      <ul
+        class="font-matangi flex hidden flex-col space-y-4 px-6"
+        id="mobile-nav-ar"
+      >
+        <li>
+          <a
+            href="#about-me"
+            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >عنّي</a
+          >
+        </li>
+        <li>
+          <a
+            href="#skills"
+            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >المهارات</a
+          >
+        </li>
+        <li>
+          <a
+            href="#projects"
+            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >المشاريع</a
+          >
+        </li>
+        <li>
+          <a
+            href="#blog"
+            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >المدونة</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact-me"
+            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            >تواصل معي</a
+          >
         </li>
       </ul>
     </div>
@@ -133,469 +221,660 @@
       <!-- Hero Section -->
       <section id="about-me" class="scroll-mt-20 bg-white px-6 py-16">
         <div class="mx-auto max-w-6xl text-center">
-          <h1 class="mb-6 text-4xl font-bold md:text-5xl">
-            Hello, I'm <span class="text-secondary">Saleh Blhmr</span>
-          </h1>
-          <p class="mx-auto mb-10 max-w-3xl text-lg text-gray-600 md:text-xl">
-            A passionate frontend developer with expertise in creating
-            beautiful, functional, and user-friendly web experiences.
-          </p>
-          <div class="flex justify-center space-x-4">
-            <a
-              href="#projects"
-              class="bg-secondary hover:bg-opacity-90 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact-me"
-              class="border-secondary text-secondary hover:bg-secondary rounded-lg border px-6 py-3 font-medium transition-all duration-300 hover:text-white"
-            >
-              Contact Me
-            </a>
+          <div id="hero-en">
+            <h1 class="mb-6 text-4xl font-bold md:text-5xl">
+              Hello, I'm <span class="text-secondary">Saleh Blhmr</span>
+            </h1>
+            <p class="mx-auto mb-10 max-w-3xl text-lg text-gray-600 md:text-xl">
+              A passionate frontend developer with expertise in creating
+              beautiful, functional, and user-friendly web experiences.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#projects"
+                class="bg-secondary hover:bg-opacity-90 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300"
+                >View My Work</a
+              >
+              <a
+                href="#contact-me"
+                class="border-secondary text-secondary hover:bg-secondary rounded-lg border px-6 py-3 font-medium transition-all duration-300 hover:text-white"
+                >Contact Me</a
+              >
+            </div>
+          </div>
+          <div id="hero-ar" class="hidden">
+            <h1 class="mb-6 text-4xl font-bold md:text-5xl">
+              مرحباً، أنا <span class="text-secondary">صالح بلحمر</span>
+            </h1>
+            <p class="mx-auto mb-10 max-w-3xl text-lg text-gray-600 md:text-xl">
+              هل تحتاج إلى موقع ويب عصري، سريع، وسهل الاستخدام؟ أنا هنا لأجعل
+              ذلك حقيقة. أُصمِّم وأُطوِّر مواقع ويب مخصصة لعملك لضمان تجربة
+              مستخدم لا تُنسى.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#projects"
+                class="bg-secondary hover:bg-opacity-90 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300"
+                >شاهد أعمالي</a
+              >
+              <a
+                href="#contact-me"
+                class="border-secondary text-secondary hover:bg-secondary rounded-lg border px-6 py-3 font-medium transition-all duration-300 hover:text-white"
+                >تواصل معي</a
+              >
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- Tabs -->
       <div class="mx-auto w-full max-w-full rounded-xl bg-white p-6 shadow-lg">
-        <!-- Tabs -->
         <div
           class="mx-auto mb-4 inline-flex h-24 w-full items-center justify-center"
         >
           <button
             data-tab="tab1"
             class="bg-primary hover:bg-secondary h-2/4 rounded-tl-2xl px-4 py-2 text-white"
+            id="tab-btn-en-1"
           >
             Lawfirms
           </button>
           <button
             data-tab="tab2"
             class="bg-primary hover:bg-secondary h-2/4 px-4 py-2 text-white"
+            id="tab-btn-en-2"
           >
             Restraunts
           </button>
           <button
             data-tab="tab3"
             class="bg-primary hover:bg-secondary h-2/4 rounded-br-2xl px-4 py-2 text-white"
+            id="tab-btn-en-3"
           >
             Buisnesses
           </button>
+          <button
+            data-tab="tab1"
+            class="bg-primary hover:bg-secondary hidden h-2/4 rounded-br-3xl px-4 py-2 text-white"
+            id="tab-btn-ar-1"
+          >
+            المحاماة
+          </button>
+          <button
+            data-tab="tab2"
+            class="bg-primary hover:bg-secondary hidden h-2/4 px-4 py-2 text-white"
+            id="tab-btn-ar-2"
+          >
+            المطاعم
+          </button>
+          <button
+            data-tab="tab3"
+            class="bg-primary hover:bg-secondary hidden h-2/4 rounded-tl-3xl px-4 py-2 text-white"
+            id="tab-btn-ar-3"
+          >
+            الأعمال
+          </button>
         </div>
-
-        <!-- Content -->
         <div class="text-center">
-          <div data-content="tab1" class="">
+          <div data-content="tab1" id="tab-content-en-1">
             <p class="text-gray-700">
               This is content for <strong>Tab 1</strong>.
             </p>
           </div>
-          <div data-content="tab2" class="hidden">
+          <div data-content="tab2" class="hidden" id="tab-content-en-2">
             <p class="text-gray-700">
               This is content for <strong>Tab 2</strong>.
             </p>
           </div>
-          <div data-content="tab3" class="hidden">
+          <div data-content="tab3" class="hidden" id="tab-content-en-3">
             <p class="text-gray-700">
               This is content for <strong>Tab 3</strong>.
             </p>
           </div>
-        </div>
-      </div>
-    </main>
-    <!-- Skills section -->
-    <section id="skills" class="scroll-mt-10 bg-gray-900 px-4 py-16 text-white">
-      <h2 class="mb-12 text-center text-4xl font-bold">My Skills</h2>
-      <div class="relative mx-auto max-w-5xl">
-        <!-- Skill wrapper -->
-        <div
-          id="skills-container"
-          class="flex items-center justify-center overflow-hidden"
-        >
-          <!-- Skill 1 -->
-          <div class="skill flex flex-col items-center justify-center p-4">
-            <div class="relative h-40 w-40">
-              <svg class="h-full w-full -rotate-90 transform">
-                <circle
-                  class="text-gray-700"
-                  stroke-width="10"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                />
-                <circle
-                  class="text-secondary"
-                  stroke-width="10"
-                  stroke-dasharray="384.82"
-                  stroke-dashoffset="43.98"
-                  stroke-linecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  style="transition: stroke-dashoffset 0.5s ease-in-out"
-                />
-              </svg>
-              <span
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
-              >
-                74%
-              </span>
-            </div>
-            <p class="mt-2 text-xl font-medium">React</p>
+          <div data-content="tab1" class="hidden" id="tab-content-ar-1">
+            <p class="text-gray-700">هذا محتوى <strong>التبويب ١</strong>.</p>
           </div>
-
-          <!-- Skill 2 -->
-          <div class="skill flex flex-col items-center justify-center p-4">
-            <div class="relative h-40 w-40">
-              <svg class="h-full w-full -rotate-90 transform">
-                <circle
-                  class="text-gray-700"
-                  stroke-width="10"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                />
-                <circle
-                  class="text-secondary"
-                  stroke-width="10"
-                  stroke-dasharray="439.82"
-                  stroke-dashoffset="65.97"
-                  stroke-linecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  style="transition: stroke-dashoffset 0.5s ease-in-out"
-                />
-              </svg>
-              <span
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
-              >
-                85%
-              </span>
-            </div>
-            <p class="mt-2 text-xl font-medium">Tailwind</p>
+          <div data-content="tab2" class="hidden" id="tab-content-ar-2">
+            <p class="text-gray-700">هذا محتوى <strong>التبويب ٢</strong>.</p>
           </div>
-
-          <!-- Skill 3 -->
-          <div class="skill flex flex-col items-center justify-center p-4">
-            <div class="relative h-40 w-40">
-              <svg class="h-full w-full -rotate-90 transform">
-                <circle
-                  class="text-gray-700"
-                  stroke-width="10"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                />
-                <circle
-                  class="text-secondary"
-                  stroke-width="10"
-                  stroke-dasharray="247"
-                  stroke-dashoffset="21.99"
-                  stroke-linecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  style="transition: stroke-dashoffset 0.5s ease-in-out"
-                />
-              </svg>
-              <span
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
-              >
-                50%
-              </span>
-            </div>
-            <p class="mt-2 text-xl font-medium">Typescript</p>
-          </div>
-
-          <!-- Skill 4 -->
-          <div class="skill flex flex-col items-center justify-center p-4">
-            <div class="relative h-40 w-40">
-              <svg class="h-full w-full -rotate-90 transform">
-                <circle
-                  class="text-gray-700"
-                  stroke-width="10"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                />
-                <circle
-                  class="text-secondary"
-                  stroke-width="10"
-                  stroke-dasharray="439.82"
-                  stroke-dashoffset="21.99"
-                  stroke-linecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  style="transition: stroke-dashoffset 0.5s ease-in-out"
-                />
-              </svg>
-              <span
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
-              >
-                95%
-              </span>
-            </div>
-            <p class="mt-2 text-xl font-medium">Wordpress</p>
-          </div>
-          <!-- Skill 5 -->
-          <div class="skill flex flex-col items-center justify-center p-4">
-            <div class="relative h-40 w-40">
-              <svg class="h-full w-full -rotate-90 transform">
-                <circle
-                  class="text-gray-700"
-                  stroke-width="10"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                />
-                <circle
-                  class="text-secondary"
-                  stroke-width="10"
-                  stroke-dasharray="280"
-                  stroke-dashoffset="21.99"
-                  stroke-linecap="round"
-                  stroke="currentColor"
-                  fill="transparent"
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  style="transition: stroke-dashoffset 0.5s ease-in-out"
-                />
-              </svg>
-              <span
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
-              >
-                60%
-              </span>
-            </div>
-            <p class="mt-2 text-xl font-medium">Figma</p>
+          <div data-content="tab3" class="hidden" id="tab-content-ar-3">
+            <p class="text-gray-700">هذا محتوى <strong>التبويب ٣</strong>.</p>
           </div>
         </div>
-
-        <!-- Navigation buttons -->
-        <button
-          id="prevBtn"
-          class="bg-secondary text-primary absolute top-1/2 left-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
-        >
-          &lt;
-        </button>
-        <button
-          id="nextBtn"
-          class="bg-secondary text-primary absolute top-1/2 right-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
-        >
-          &gt;
-        </button>
       </div>
-    </section>
-    <!-- Projects section -->
-    <div
-      id="projects"
-      class="flex scroll-mt-10 flex-col items-center justify-center space-y-3.5 py-6"
-    >
-      <h1
-        class="font-matangi my-7 text-center text-4xl font-bold text-gray-800 capitalize"
+
+      <!-- Skills section -->
+      <section
+        id="skills"
+        class="scroll-mt-10 bg-gray-900 px-4 py-16 text-white"
       >
-        Projects i worked on
-      </h1>
-      <div class="flex flex-col items-center justify-center space-y-3.5">
-        <img
-          class="size-36"
-          src="/src/assets/construction-svgrepo-com.svg"
-          alt=""
-        />
-        <h2 class="font-sans text-5xl capitalize">
-          this section is under construction 🙃
+        <h2 class="mb-12 text-center text-4xl font-bold" id="skills-title-en">
+          My Skills
         </h2>
-      </div>
-    </div>
-    <!-- End of Skills section -->
-    <!-- Blog section -->
-    <div
-      id="blog"
-      class="relative mt-1.5 flex scroll-mt-20 flex-col bg-[url('/src/assets/9019808.jpg')]"
-    >
-      <h1
-        class="font-matangi my-7 text-center text-4xl font-bold text-white capitalize"
-      >
-        My Blog
-      </h1>
-
-      <div class="relative flex items-center">
-        <!-- Prev Button (left side of posts container) -->
-        <div
-          id="blogPrevBtn"
-          class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
+        <h2
+          class="mb-12 hidden text-center text-4xl font-bold"
+          id="skills-title-ar"
         >
-          <svg
-            class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="{1.5}"
-            stroke="currentColor"
-            className="size-10 "
+          مهاراتي
+        </h2>
+        <div class="relative mx-auto max-w-5xl">
+          <!-- Skill wrapper -->
+          <div
+            id="skills-container"
+            class="flex items-center justify-center overflow-hidden"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
-            />
-          </svg>
-        </div>
-
-        <!-- Posts container -->
-        <ul
-          id="blog-posts"
-          class="flex h-3/4 w-full justify-around overflow-hidden py-3"
-        ></ul>
-
-        <!-- Next Button (right side of posts container) -->
-        <div
-          id="blogNextBtn"
-          class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokewidth="{1.5}"
-            stroke="currentColor"
-            classname="size-6"
-            class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
-          >
-            <path
-              strokelinecap="round"
-              strokelinejoin="round"
-              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
-            ></path>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <!-- End of Blog Section -->
-
-    <!-- Contact me Section -->
-    <section
-      id="contact-me"
-      class="flex h-[500px] w-full scroll-mt-10 flex-col items-center text-gray-800"
-    >
-      <!-- Centered heading -->
-      <h1 class="mt-7 mb-8 w-full text-center text-4xl font-bold">
-        Contact Me
-      </h1>
-      <!-- Two-column layout -->
-      <div class="flex w-4/5 max-w-5xl flex-1 gap-8">
-        <!-- Left column: WhatsApp + QR -->
-        <div class="flex w-1/2 flex-col justify-start">
-          <!-- WhatsApp number container -->
-          <a
-            href="https://wa.me/qr/4XE3XLHDUFEDC1"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mb-8 flex w-full rounded-2xl bg-green-500 transition-colors duration-300 hover:bg-green-600"
-          >
-            <div class="h-full w-1/4">
-              <img
-                class="h-full w-full"
-                src="/src/assets/icons8-whatsapp.svg"
-                alt="WhatsApp"
-              />
+            <!-- Skill 1 -->
+            <div class="skill flex flex-col items-center justify-center p-4">
+              <div class="relative h-40 w-40">
+                <svg class="h-full w-full -rotate-90 transform">
+                  <circle
+                    class="text-gray-700"
+                    stroke-width="10"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                  />
+                  <circle
+                    class="text-secondary"
+                    stroke-width="10"
+                    stroke-dasharray="384.82"
+                    stroke-dashoffset="43.98"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                    style="transition: stroke-dashoffset 0.5s ease-in-out"
+                  />
+                </svg>
+                <span
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
+                >
+                  74%
+                </span>
+              </div>
+              <p class="mt-2 text-xl font-medium">React</p>
             </div>
-            <p class="ml-5 self-center text-4xl font-bold text-white">
-              +966 570121551
-            </p>
-          </a>
 
-          <!-- QR code container -->
-          <div class="w-1/2">
-            <img
-              src="/src/assets/shared_qr_code.png"
-              alt="QR Code"
-              class="h-auto w-full"
-            />
+            <!-- Skill 2 -->
+            <div class="skill flex flex-col items-center justify-center p-4">
+              <div class="relative h-40 w-40">
+                <svg class="h-full w-full -rotate-90 transform">
+                  <circle
+                    class="text-gray-700"
+                    stroke-width="10"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                  />
+                  <circle
+                    class="text-secondary"
+                    stroke-width="10"
+                    stroke-dasharray="439.82"
+                    stroke-dashoffset="65.97"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                    style="transition: stroke-dashoffset 0.5s ease-in-out"
+                  />
+                </svg>
+                <span
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
+                >
+                  85%
+                </span>
+              </div>
+              <p class="mt-2 text-xl font-medium">Tailwind</p>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="skill flex flex-col items-center justify-center p-4">
+              <div class="relative h-40 w-40">
+                <svg class="h-full w-full -rotate-90 transform">
+                  <circle
+                    class="text-gray-700"
+                    stroke-width="10"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                  />
+                  <circle
+                    class="text-secondary"
+                    stroke-width="10"
+                    stroke-dasharray="247"
+                    stroke-dashoffset="21.99"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                    style="transition: stroke-dashoffset 0.5s ease-in-out"
+                  />
+                </svg>
+                <span
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
+                >
+                  50%
+                </span>
+              </div>
+              <p class="mt-2 text-xl font-medium">Typescript</p>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="skill flex flex-col items-center justify-center p-4">
+              <div class="relative h-40 w-40">
+                <svg class="h-full w-full -rotate-90 transform">
+                  <circle
+                    class="text-gray-700"
+                    stroke-width="10"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                  />
+                  <circle
+                    class="text-secondary"
+                    stroke-width="10"
+                    stroke-dasharray="439.82"
+                    stroke-dashoffset="21.99"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                    style="transition: stroke-dashoffset 0.5s ease-in-out"
+                  />
+                </svg>
+                <span
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
+                >
+                  95%
+                </span>
+              </div>
+              <p class="mt-2 text-xl font-medium">Wordpress</p>
+            </div>
+            <!-- Skill 5 -->
+            <div class="skill flex flex-col items-center justify-center p-4">
+              <div class="relative h-40 w-40">
+                <svg class="h-full w-full -rotate-90 transform">
+                  <circle
+                    class="text-gray-700"
+                    stroke-width="10"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                  />
+                  <circle
+                    class="text-secondary"
+                    stroke-width="10"
+                    stroke-dasharray="280"
+                    stroke-dashoffset="21.99"
+                    stroke-linecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="70"
+                    cx="80"
+                    cy="80"
+                    style="transition: stroke-dashoffset 0.5s ease-in-out"
+                  />
+                </svg>
+                <span
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold"
+                >
+                  60%
+                </span>
+              </div>
+              <p class="mt-2 text-xl font-medium">Figma</p>
+            </div>
+          </div>
+
+          <!-- Navigation buttons -->
+          <button
+            id="prevBtn"
+            class="bg-secondary text-primary absolute top-1/2 left-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
+          >
+            &lt;
+          </button>
+          <button
+            id="nextBtn"
+            class="bg-secondary text-primary absolute top-1/2 right-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
+          >
+            &gt;
+          </button>
+        </div>
+      </section>
+      <!-- Projects section -->
+      <div
+        id="projects"
+        class="flex scroll-mt-10 flex-col items-center justify-center space-y-3.5 py-6"
+      >
+        <h1
+          class="font-matangi my-7 text-center text-4xl font-bold text-gray-800 capitalize"
+          id="projects-title-en"
+        >
+          Projects i worked on
+        </h1>
+        <h1
+          class="font-matangi my-7 hidden text-center text-4xl font-bold text-gray-800 capitalize"
+          id="projects-title-ar"
+        >
+          المشاريع التي عملت عليها
+        </h1>
+        <div class="flex flex-col items-center justify-center space-y-3.5">
+          <img
+            class="size-36"
+            src="/src/assets/construction-svgrepo-com.svg"
+            alt=""
+          />
+          <h2 class="font-sans text-5xl capitalize" id="projects-under-en">
+            this section is under construction 🙃
+          </h2>
+          <h2
+            class="hidden font-sans text-5xl capitalize"
+            id="projects-under-ar"
+          >
+            هذا القسم تحت الإنشاء 🙃
+          </h2>
+        </div>
+      </div>
+      <!-- Blog section -->
+      <div
+        id="blog"
+        class="relative mt-1.5 flex scroll-mt-20 flex-col bg-[url('/src/assets/9019808.jpg')]"
+      >
+        <h1
+          class="font-matangi my-7 text-center text-4xl font-bold text-white capitalize"
+          id="blog-title-en"
+        >
+          My Blog
+        </h1>
+        <h1
+          class="font-matangi my-7 hidden text-center text-4xl font-bold text-white capitalize"
+          id="blog-title-ar"
+        >
+          مدونتي
+        </h1>
+
+        <div class="relative flex items-center">
+          <!-- Prev Button (left side of posts container) -->
+          <div
+            id="blogPrevBtn"
+            class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
+          >
+            <svg
+              class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="{1.5}"
+              stroke="currentColor"
+              className="size-10 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+              />
+            </svg>
+          </div>
+
+          <!-- Posts container -->
+          <ul
+            id="blog-posts"
+            class="flex h-3/4 w-full justify-around overflow-hidden py-3"
+          ></ul>
+
+          <!-- Next Button (right side of posts container) -->
+          <div
+            id="blogNextBtn"
+            class="bg-primary text-secondary hover:bg-secondary flex size-14 cursor-pointer items-center justify-center rounded-full hover:text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokewidth="{1.5}"
+              stroke="currentColor"
+              classname="size-6"
+              class="size-10 duration-300 hover:scale-110 hover:animate-pulse"
+            >
+              <path
+                strokelinecap="round"
+                strokelinejoin="round"
+                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+              ></path>
+            </svg>
           </div>
         </div>
-
-        <!-- Right column: Social Media -->
-        <section class="h-full w-1/2 rounded-2xl">
-          <ul class="flex h-full w-full justify-between">
-            <!-- GitHub -->
-            <a
-              href="https://github.com/Slo7ib"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
-            >
-              <img
-                src="/src/assets/github-142-svgrepo-com.svg"
-                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
-                alt="GitHub Logo"
-              />
-            </a>
-
-            <!-- LinkedIn -->
-            <a
-              href="https://www.linkedin.com/in/saleh-blhmr-2753951a1/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
-            >
-              <img
-                src="/src/assets/linkedin-round-svgrepo-com.svg"
-                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
-                alt="LinkedIn Logo"
-              />
-            </a>
-
-            <!-- Email -->
-            <a
-              href="mailto:slo7ib@hotmail.com"
-              class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
-            >
-              <img
-                src="/src/assets/email-svgrepo-com.svg"
-                class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
-                alt="Email Logo"
-              />
-            </a>
-          </ul>
-        </section>
       </div>
-    </section>
+      <!-- Contact me Section -->
+      <section
+        id="contact-me"
+        class="flex h-[500px] w-full scroll-mt-10 flex-col items-center text-gray-800"
+      >
+        <h1
+          class="mt-7 mb-8 w-full text-center text-4xl font-bold"
+          id="contact-title-en"
+        >
+          Contact Me
+        </h1>
+        <h1
+          class="mt-7 mb-8 hidden w-full text-center text-4xl font-bold"
+          id="contact-title-ar"
+        >
+          تواصل معي
+        </h1>
+        <!-- Two-column layout -->
+        <div class="flex w-4/5 max-w-5xl flex-1 gap-8">
+          <!-- Left column: WhatsApp + QR -->
+          <div class="flex w-1/2 flex-col justify-start">
+            <!-- WhatsApp number container -->
+            <a
+              href="https://wa.me/qr/4XE3XLHDUFEDC1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mb-8 flex w-full rounded-2xl bg-green-500 transition-colors duration-300 hover:bg-green-600"
+            >
+              <div class="h-full w-1/4">
+                <img
+                  class="h-full w-full"
+                  src="/src/assets/icons8-whatsapp.svg"
+                  alt="WhatsApp"
+                />
+              </div>
+              <p class="ml-5 self-center text-4xl font-bold text-white">
+                +966 570121551
+              </p>
+            </a>
 
-    <!-- End of Contact me Section -->
+            <!-- QR code container -->
+            <div class="w-1/2">
+              <img
+                src="/src/assets/shared_qr_code.png"
+                alt="QR Code"
+                class="h-auto w-full"
+              />
+            </div>
+          </div>
 
+          <!-- Right column: Social Media -->
+          <section class="h-full w-1/2 rounded-2xl">
+            <ul class="flex h-full w-full justify-between">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/Slo7ib"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+              >
+                <img
+                  src="/src/assets/github-142-svgrepo-com.svg"
+                  class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                  alt="GitHub Logo"
+                />
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/in/saleh-blhmr-2753951a1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+              >
+                <img
+                  src="/src/assets/linkedin-round-svgrepo-com.svg"
+                  class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                  alt="LinkedIn Logo"
+                />
+              </a>
+
+              <!-- Email -->
+              <a
+                href="mailto:youremail@example.com"
+                class="group flex h-3/4 w-1/4 items-end justify-center self-center overflow-hidden rounded-full bg-orange-500 py-5 transition-colors duration-500 hover:bg-black"
+              >
+                <img
+                  src="/src/assets/email-svgrepo-com.svg"
+                  class="size-24 transform rounded-full bg-neutral-100 p-2 transition-transform duration-500 group-hover:-translate-y-40"
+                  alt="Email Logo"
+                />
+              </a>
+            </ul>
+          </section>
+        </div>
+      </section>
+      <!-- End of Contact me Section -->
+    </main>
     <!-- Footer -->
     <footer class="bg-gray-800 px-6 py-8 text-white">
       <div class="mx-auto max-w-6xl text-center">
-        <p>
+        <p id="footer-en">
           &copy; <span id="current-year"></span> Made by Saleh Blhmr. All rights
           reserved.
         </p>
+        <p id="footer-ar" class="hidden">
+          &copy; <span id="current-year"></span> تم الإنشاء بواسطة صالح بلحمر.
+          جميع الحقوق محفوظة.
+        </p>
       </div>
     </footer>
-
     <!-- Javascript Section -->
     <script src="/src/js/main.js"></script>
+    <script>
+      // Language switcher logic
+      const langSelector = document.getElementById("lang-selector");
+      function setLang(lang) {
+        langSelector.value = lang; // Ensure selector matches current language
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        // Navbar
+        document
+          .getElementById("nav-en")
+          .classList.toggle("hidden", lang !== "en");
+        document
+          .getElementById("nav-en")
+          .classList.toggle("flex", lang === "en");
+        document
+          .getElementById("nav-ar")
+          .classList.toggle("hidden", lang !== "ar");
+        document
+          .getElementById("nav-ar")
+          .classList.toggle("flex", lang === "ar");
+        // Mobile nav
+        document
+          .getElementById("mobile-nav-en")
+          .classList.toggle("hidden", lang !== "en");
+        document
+          .getElementById("mobile-nav-en")
+          .classList.toggle("flex", lang === "en");
+        document
+          .getElementById("mobile-nav-ar")
+          .classList.toggle("hidden", lang !== "ar");
+        document
+          .getElementById("mobile-nav-ar")
+          .classList.toggle("flex", lang === "ar");
+        // Hero
+        document.getElementById("hero-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("hero-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        // Tabs
+        document.getElementById("tab-btn-en-1").style.display =
+          lang === "en" ? "inline-block" : "none";
+        document.getElementById("tab-btn-en-2").style.display =
+          lang === "en" ? "inline-block" : "none";
+        document.getElementById("tab-btn-en-3").style.display =
+          lang === "en" ? "inline-block" : "none";
+        document.getElementById("tab-btn-ar-1").style.display =
+          lang === "ar" ? "inline-block" : "none";
+        document.getElementById("tab-btn-ar-2").style.display =
+          lang === "ar" ? "inline-block" : "none";
+        document.getElementById("tab-btn-ar-3").style.display =
+          lang === "ar" ? "inline-block" : "none";
+        // Tabs content
+        document.getElementById("tab-content-en-1").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("tab-content-en-2").style.display =
+          lang === "en" ? "none" : "none";
+        document.getElementById("tab-content-en-3").style.display =
+          lang === "en" ? "none" : "none";
+        document.getElementById("tab-content-ar-1").style.display =
+          lang === "ar" ? "block" : "none";
+        document.getElementById("tab-content-ar-2").style.display =
+          lang === "ar" ? "none" : "none";
+        document.getElementById("tab-content-ar-3").style.display =
+          lang === "ar" ? "none" : "none";
+        // Skills
+        document.getElementById("skills-title-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("skills-title-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        // Projects
+        document.getElementById("projects-title-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("projects-title-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        document.getElementById("projects-under-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("projects-under-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        // Blog
+        document.getElementById("blog-title-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("blog-title-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        // Contact
+        document.getElementById("contact-title-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("contact-title-ar").style.display =
+          lang === "ar" ? "block" : "none";
+        // Footer
+        document.getElementById("footer-en").style.display =
+          lang === "en" ? "block" : "none";
+        document.getElementById("footer-ar").style.display =
+          lang === "ar" ? "block" : "none";
+      }
+      langSelector.addEventListener("change", (e) => {
+        setLang(e.target.value);
+      });
+      // Default to English
+      setLang("en");
+    </script>
     <script src="https://salehblhmr.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=showBloggerPosts"></script>
   </body>
 </html>
