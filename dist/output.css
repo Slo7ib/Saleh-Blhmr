@@ -940,6 +940,14 @@
       }
     }
   }
+  .hover\:font-bold {
+    &:hover {
+      @media (hover: hover) {
+        --tw-font-weight: var(--font-weight-bold);
+        font-weight: var(--font-weight-bold);
+      }
+    }
+  }
   .hover\:text-black {
     &:hover {
       @media (hover: hover) {
