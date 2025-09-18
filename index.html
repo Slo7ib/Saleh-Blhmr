@@ -140,41 +140,41 @@
     <!-- Mobile Navigation (hidden by default) -->
     <div
       id="mobile-menu"
-      class="mobile-menu pointer-events-none fixed top-20 left-0 z-40 w-full bg-white shadow-lg"
+      class="mobile-menu pointer-events-none fixed top-20 left-0 z-40 w-full bg-white opacity-0 shadow-lg"
     >
       <ul
-        class="font-matangi flex flex-col space-y-0.5 border bg-black px-6 text-orange-800"
+        class="font-matangi hidden flex-col space-y-3 bg-black px-6 pb-5 text-orange-800 opacity-0"
         id="mobile-nav-en"
       >
-        <li class="w-full border-b pb-1.5 text-center">
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#about-me"
             class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >About Me</a
           >
         </li>
-        <li class="w-full border-b pb-1.5 text-center">
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#skills"
             class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >Skills</a
           >
         </li>
-        <li class="w-full border-b pb-1.5 text-center">
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#projects"
             class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >Projects</a
           >
         </li>
-        <li class="w-full border-b pb-1.5 text-center">
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#blog"
             class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >Blog</a
           >
         </li>
-        <li class="w-full border-b pb-1.5 text-center">
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#contact-me"
             class="text-secondary text-2xl font-semibold tracking-wider uppercase"
@@ -183,41 +183,41 @@
         </li>
       </ul>
       <ul
-        class="font-matangi flex hidden flex-col space-y-4 px-6"
+        class="font-matangi hidden flex-col space-y-3 bg-black px-6 pb-5 text-orange-800 opacity-0"
         id="mobile-nav-ar"
       >
-        <li>
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#about-me"
-            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >عنّي</a
           >
         </li>
-        <li>
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#skills"
-            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >المهارات</a
           >
         </li>
-        <li>
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#projects"
-            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >المشاريع</a
           >
         </li>
-        <li>
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#blog"
-            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >المدونة</a
           >
         </li>
-        <li>
+        <li class="w-full rounded-b-full border-b pb-1.5 text-center">
           <a
             href="#contact-me"
-            class="text-text hover:text-secondary block border-b border-gray-100 py-2 text-sm transition-colors duration-300"
+            class="text-secondary text-2xl font-semibold tracking-wider uppercase"
             >تواصل معي</a
           >
         </li>
@@ -278,7 +278,7 @@
       <!-- Tabs -->
       <div class="mx-auto w-full max-w-full rounded-xl bg-white p-6 shadow-lg">
         <div
-          class="mx-auto mb-4 inline-flex h-24 w-full items-center justify-center"
+          class="mx-auto mb-4 inline-flex h-24 w-full flex-wrap items-center justify-center"
         >
           <button
             data-tab="tab1"
