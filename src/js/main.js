@@ -82,9 +82,15 @@ window.addEventListener("resize", () => {
 window.showBloggerPosts = function (data) {
   const posts = (data.feed.entry || []).reverse(); // newest first
   let currentIndex = 0;
-  const postsPerPage = 3;
+  let postsPerPage;
+
+  function updatePostsPerPage() {
+    postsPerPage = window.innerWidth < 768 ? 1 : 3; // 👈 mobile = 1, desktop/tablet = 3
+  }
 
   function renderPosts() {
+    updatePostsPerPage(); // update dynamically on each render
+
     let html = "";
     const visiblePosts = posts.slice(currentIndex, currentIndex + postsPerPage);
 
@@ -107,7 +113,7 @@ window.showBloggerPosts = function (data) {
 
       html += `<a href="${link}" target="_blank">
         <article
-  class="shadow-lg flex flex-col h-[500px] w-5/6 md:w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
+  class="shadow-lg flex flex-col h-[500px] w-5/6 md:w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right mx-auto"
 >
   <!-- image -->
   <img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />
@@ -171,6 +177,12 @@ window.showBloggerPosts = function (data) {
 
   // Initial render
   renderPosts();
+
+  // Re-render on window resize to adapt posts per page
+  window.addEventListener("resize", () => {
+    currentIndex = 0; // reset to first page when resizing
+    renderPosts();
+  });
 };
 
 // Footer
@@ -266,3 +278,4 @@ renderPosts = ((origRender) => {
     translateContent(lang === "ar" ? ar : en);
   };
 })(renderPosts);
+// Last checkpoint
