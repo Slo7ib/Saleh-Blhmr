@@ -23,10 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //
-const skills = document.querySelectorAll(".skill");
-const skillsPerPage = 3;
+let skills = document.querySelectorAll(".skill");
 let currentIndex = 0;
-const totalPages = Math.ceil(skills.length / skillsPerPage);
+let skillsPerPage;
+let totalPages;
+
+function updatePagination() {
+  // Set skills per page based on screen width
+  if (window.innerWidth < 768) {
+    skillsPerPage = 1; // mobile
+  } else {
+    skillsPerPage = skills.length; // show all for desktop/tablet
+  }
+
+  totalPages = Math.ceil(skills.length / skillsPerPage);
+}
 
 function showSkills() {
   skills.forEach((skill, i) => {
@@ -34,21 +45,39 @@ function showSkills() {
       i >= currentIndex * skillsPerPage &&
       i < (currentIndex + 1) * skillsPerPage
         ? "flex"
-        : "none";
+        : window.innerWidth < 768
+          ? "none"
+          : "flex"; // keep them visible on desktop
   });
 }
 
+// Button handlers
 document.getElementById("prevBtn").addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + totalPages) % totalPages;
-  showSkills();
+  if (window.innerWidth < 768) {
+    currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+    showSkills();
+  }
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % totalPages;
+  if (window.innerWidth < 768) {
+    currentIndex = (currentIndex + 1) % totalPages;
+    showSkills();
+  }
+});
+
+// Run on load + resize
+updatePagination();
+showSkills();
+
+window.addEventListener("resize", () => {
+  updatePagination();
+  currentIndex = 0;
   showSkills();
 });
 
-showSkills();
+// last change point
+
 // Blog Section
 window.showBloggerPosts = function (data) {
   const posts = (data.feed.entry || []).reverse(); // newest first
@@ -78,7 +107,7 @@ window.showBloggerPosts = function (data) {
 
       html += `<a href="${link}" target="_blank">
         <article
-  class="shadow-lg flex flex-col h-[500px] w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
+  class="shadow-lg flex flex-col h-[500px] w-5/6 md:w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
 >
   <!-- image -->
   <img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />

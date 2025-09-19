@@ -362,6 +362,7 @@
       </div>
 
       <!-- Skills section -->
+      <!-- last change point -->
       <section
         id="skills"
         class="scroll-mt-10 bg-gray-900 px-4 py-16 text-white"
@@ -564,13 +565,13 @@
           <!-- Navigation buttons -->
           <button
             id="prevBtn"
-            class="bg-secondary text-primary absolute top-1/2 left-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
+            class="bg-secondary text-primary absolute top-1/2 left-0 block -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110 md:hidden"
           >
             &lt;
           </button>
           <button
             id="nextBtn"
-            class="bg-secondary text-primary absolute top-1/2 right-0 -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110"
+            class="bg-secondary text-primary absolute top-1/2 right-0 block -translate-y-1/2 rounded-full p-2 shadow-lg transition-transform hover:scale-110 md:hidden"
           >
             &gt;
           </button>
@@ -582,28 +583,31 @@
         class="flex scroll-mt-10 flex-col items-center justify-center space-y-3.5 py-6"
       >
         <h1
-          class="font-matangi my-7 text-center text-4xl font-bold text-gray-800 capitalize"
+          class="font-matangi my-7 text-center text-2xl font-bold text-gray-800 capitalize sm:text-4xl"
           id="projects-title-en"
         >
           Projects i worked on
         </h1>
         <h1
-          class="font-matangi my-7 hidden text-center text-4xl font-bold text-gray-800 capitalize"
+          class="font-matangi my-7 text-center text-2xl font-bold text-gray-800 capitalize sm:text-4xl"
           id="projects-title-ar"
         >
           المشاريع التي عملت عليها
         </h1>
         <div class="flex flex-col items-center justify-center space-y-3.5">
           <img
-            class="size-36"
+            class="size-28 md:size-36"
             src="/src/assets/construction-svgrepo-com.svg"
             alt=""
           />
-          <h2 class="font-sans text-5xl capitalize" id="projects-under-en">
+          <h2
+            class="font-sans text-2xl capitalize md:text-5xl"
+            id="projects-under-en"
+          >
             this section is under construction 🙃
           </h2>
           <h2
-            class="hidden font-sans text-5xl capitalize"
+            class="hidden font-sans text-2xl capitalize md:text-5xl"
             id="projects-under-ar"
           >
             هذا القسم تحت الإنشاء 🙃
@@ -654,7 +658,7 @@
           <!-- Posts container -->
           <ul
             id="blog-posts"
-            class="flex h-3/4 w-full justify-around overflow-hidden py-3"
+            class="block h-3/4 w-full justify-around overflow-hidden py-3 md:flex"
           ></ul>
 
           <!-- Next Button (right side of posts container) -->
