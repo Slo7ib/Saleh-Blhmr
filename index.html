@@ -20,6 +20,26 @@
         </div>
       </div>
 
+      <!-- Mobile menu button and mobile language selector -->
+      <div class="mr-5 flex items-center md:hidden">
+        <button id="mobile-menu-button" class="text-text flex items-center">
+          <img
+            class="mr-3 size-11"
+            src="/src/assets/burger-menu-svgrepo-com.svg"
+            alt=""
+          />
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+        <!-- Mobile language selector -->
+        <select
+          id="lang-selector-mobile"
+          class="border-primary bg-secondary ml-2 size-12 rounded-lg border px-1.5 py-0 text-black md:hidden"
+        >
+          <option value="en" selected>En</option>
+          <option value="ar">Ar</option>
+        </select>
+      </div>
+
       <!-- Desktop Navigation -->
       <nav class="bg-primary mr-16 hidden items-center md:flex">
         <ul class="font-matangi flex space-x-24" id="nav-en">
@@ -116,7 +136,7 @@
             >
           </li>
         </ul>
-        <!-- Language selector -->
+        <!-- Desktop language selector -->
         <select
           id="lang-selector"
           class="border-primary bg-secondary ml-8 size-12 rounded-lg border px-1.5 py-0 text-black"
@@ -125,16 +145,6 @@
           <option value="ar">Ar</option>
         </select>
       </nav>
-
-      <!-- Mobile menu button -->
-      <button id="mobile-menu-button" class="text-text mr-5 md:hidden">
-        <img
-          class="mr-3 size-11"
-          src="/src/assets/burger-menu-svgrepo-com.svg"
-          alt=""
-        />
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
     </header>
 
     <!-- Mobile Navigation (hidden by default) -->
@@ -786,8 +796,12 @@
     <script>
       // Language switcher logic
       const langSelector = document.getElementById("lang-selector");
+      const langSelectorMobile = document.getElementById(
+        "lang-selector-mobile",
+      );
       function setLang(lang) {
-        langSelector.value = lang; // Ensure selector matches current language
+        langSelector.value = lang;
+        langSelectorMobile.value = lang;
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
         // Navbar
@@ -880,8 +894,87 @@
       langSelector.addEventListener("change", (e) => {
         setLang(e.target.value);
       });
+      langSelectorMobile.addEventListener("change", (e) => {
+        setLang(e.target.value);
+      });
       // Default to English
       setLang("en");
+
+      // Mobile menu toggle logic
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let mobileMenuOpen = false;
+
+      function hideMobileMenu() {
+        mobileMenu.classList.add("pointer-events-none", "opacity-0");
+        mobileMenu.classList.remove("pointer-events-auto", "opacity-100");
+        document
+          .getElementById("mobile-nav-en")
+          .classList.add("hidden", "opacity-0");
+        document
+          .getElementById("mobile-nav-en")
+          .classList.remove("flex", "opacity-100");
+        document
+          .getElementById("mobile-nav-ar")
+          .classList.add("hidden", "opacity-0");
+        document
+          .getElementById("mobile-nav-ar")
+          .classList.remove("flex", "opacity-100");
+        mobileMenuOpen = false;
+      }
+
+      mobileMenuButton.addEventListener("click", function () {
+        mobileMenuOpen = !mobileMenuOpen;
+        if (mobileMenuOpen) {
+          mobileMenu.classList.remove("pointer-events-none", "opacity-0");
+          mobileMenu.classList.add("pointer-events-auto", "opacity-100");
+          // Show the correct language menu
+          if (langSelector.value === "en") {
+            document
+              .getElementById("mobile-nav-en")
+              .classList.remove("hidden", "opacity-0");
+            document
+              .getElementById("mobile-nav-en")
+              .classList.add("flex", "opacity-100");
+            document
+              .getElementById("mobile-nav-ar")
+              .classList.add("hidden", "opacity-0");
+            document
+              .getElementById("mobile-nav-ar")
+              .classList.remove("flex", "opacity-100");
+          } else {
+            document
+              .getElementById("mobile-nav-ar")
+              .classList.remove("hidden", "opacity-0");
+            document
+              .getElementById("mobile-nav-ar")
+              .classList.add("flex", "opacity-100");
+            document
+              .getElementById("mobile-nav-en")
+              .classList.add("hidden", "opacity-0");
+            document
+              .getElementById("mobile-nav-en")
+              .classList.remove("flex", "opacity-100");
+          }
+        } else {
+          hideMobileMenu();
+        }
+      });
+
+      // Hide mobile menu when language changes
+      langSelector.addEventListener("change", (e) => {
+        setLang(e.target.value);
+        hideMobileMenu();
+      });
+
+      // Hide mobile menu when any link inside it is clicked
+      document
+        .querySelectorAll("#mobile-nav-en a, #mobile-nav-ar a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            hideMobileMenu();
+          });
+        });
     </script>
     <script src="https://salehblhmr.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=showBloggerPosts"></script>
   </body>
