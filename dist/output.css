@@ -655,6 +655,9 @@
   .bg-\[url\(\'\/src\/assets\/9019808\.jpg\'\)\] {
     background-image: url('/src/assets/9019808.jpg');
   }
+  .bg-\[url\(\'src\/assets\/9019808\.jpg\'\)\] {
+    background-image: url('src/assets/9019808.jpg');
+  }
   .p-0 {
     padding: calc(var(--spacing) * 0);
   }
