@@ -690,6 +690,9 @@
       background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
     }
   }
+  .bg-\[url\(\'\/assets\/9019808\.jpg\'\)\] {
+    background-image: url('/assets/9019808.jpg');
+  }
   .bg-\[url\(\'\/src\/assets\/9019808\.jpg\'\)\] {
     background-image: url('/src/assets/9019808.jpg');
   }
