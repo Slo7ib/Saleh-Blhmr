@@ -292,6 +292,7 @@
       </section>
 
       <!-- Tabs -->
+      <!-- Before Change -->
       <div class="mx-auto w-full max-w-full rounded-xl bg-white p-6 shadow-lg">
         <div
           class="mx-auto mb-4 inline-flex h-24 w-full flex-wrap items-center justify-center"
@@ -342,27 +343,34 @@
         <div class="text-center">
           <div data-content="tab1" id="tab-content-en-1">
             <p class="text-gray-700">
-              This is content for <strong>Tab 1</strong>.
+              This is content for <strong>Lawfirms Tab</strong>.
             </p>
           </div>
           <div data-content="tab2" class="hidden" id="tab-content-en-2">
             <p class="text-gray-700">
-              This is content for <strong>Tab 2</strong>.
+              This is content for <strong>Restraunts Tab</strong>.
             </p>
           </div>
           <div data-content="tab3" class="hidden" id="tab-content-en-3">
             <p class="text-gray-700">
-              This is content for <strong>Tab 3</strong>.
+              This is content for <strong>Buisness Tab</strong>.
             </p>
           </div>
+
           <div data-content="tab1" class="hidden" id="tab-content-ar-1">
-            <p class="text-gray-700">هذا محتوى <strong>التبويب ١</strong>.</p>
+            <p class="text-gray-700">
+              هذا محتوى <strong>تبويب المحاماة</strong>.
+            </p>
           </div>
           <div data-content="tab2" class="hidden" id="tab-content-ar-2">
-            <p class="text-gray-700">هذا محتوى <strong>التبويب ٢</strong>.</p>
+            <p class="text-gray-700">
+              هذا محتوى <strong>تبويب المطاعم</strong>.
+            </p>
           </div>
           <div data-content="tab3" class="hidden" id="tab-content-ar-3">
-            <p class="text-gray-700">هذا محتوى <strong>التبويب ٣</strong>.</p>
+            <p class="text-gray-700">
+              هذا محتوى <strong>تبويب الاعمال</strong>.
+            </p>
           </div>
         </div>
       </div>
@@ -823,6 +831,7 @@
     <script src="src\js\main.js"></script>
     <!-- src\js\main.js -->
     <script>
+
       // Language switcher logic
       const langSelector = document.getElementById("lang-selector");
       const langSelectorMobile = document.getElementById(
@@ -877,19 +886,13 @@
           lang === "ar" ? "inline-block" : "none";
         document.getElementById("tab-btn-ar-3").style.display =
           lang === "ar" ? "inline-block" : "none";
-        // Tabs content
-        document.getElementById("tab-content-en-1").style.display =
-          lang === "en" ? "block" : "none";
-        document.getElementById("tab-content-en-2").style.display =
-          lang === "en" ? "none" : "none";
-        document.getElementById("tab-content-en-3").style.display =
-          lang === "en" ? "none" : "none";
-        document.getElementById("tab-content-ar-1").style.display =
-          lang === "ar" ? "block" : "none";
-        document.getElementById("tab-content-ar-2").style.display =
-          lang === "ar" ? "none" : "none";
-        document.getElementById("tab-content-ar-3").style.display =
-          lang === "ar" ? "none" : "none";
+        // Tabs content - show first tab content for each language
+        document.getElementById("tab-content-en-1").classList.toggle("hidden", lang !== "en");
+        document.getElementById("tab-content-en-2").classList.add("hidden");
+        document.getElementById("tab-content-en-3").classList.add("hidden");
+        document.getElementById("tab-content-ar-1").classList.toggle("hidden", lang !== "ar");
+        document.getElementById("tab-content-ar-2").classList.add("hidden");
+        document.getElementById("tab-content-ar-3").classList.add("hidden");
         // Skills
         document.getElementById("skills-title-en").style.display =
           lang === "en" ? "block" : "none";
@@ -1008,3 +1011,4 @@
     <script src="https://salehblhmr.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=showBloggerPosts"></script>
   </body>
 </html>
+<!-- changes -->

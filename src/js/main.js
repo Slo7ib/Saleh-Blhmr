@@ -1,43 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll("[data-tab]");
-  const contents = document.querySelectorAll("[data-content]");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      const target = tab.getAttribute("data-tab");
+      const target = tab.getAttribute("data-tab"); // e.g. tab3
+      const lang = tab.id.includes("ar") ? "ar" : "en"; // detect language
+      const targetContent = document.querySelector(
+        `#tab-content-${lang}-${target.replace("tab", "")}`,
+      );
 
-      // Remove active styles from all tabs
-      tabs.forEach((t) => t.classList.remove("bg-secondary", "text-black"));
+      // Remove active styles from all tabs in this language
+      document.querySelectorAll(`[id^="tab-btn-${lang}-"]`).forEach((t) => {
+        t.classList.remove("bg-secondary", "text-black");
+        t.classList.add("bg-primary", "text-white");
+      });
 
-      // Hide all content
-      contents.forEach((c) => c.classList.add("hidden"));
+      // Hide all contents of this language
+      document.querySelectorAll(`[id^="tab-content-${lang}-"]`).forEach((c) => {
+        c.classList.add("hidden");
+      });
 
-      // Add active style to clicked tab
+      // Activate the clicked tab
+      tab.classList.remove("bg-primary", "text-white");
       tab.classList.add("bg-secondary", "text-black");
-      // Show matching content
-      document
-        .querySelector(`[data-content='${target}']`)
-        .classList.remove("hidden");
+
+      // Show its content
+      if (targetContent) {
+        targetContent.classList.remove("hidden");
+      }
     });
   });
 });
 
+// before
 //
-let skills = document.querySelectorAll(".skill");
+const skills = document.querySelectorAll(".skill");
+const skillsPerPage = 3;
 let currentIndex = 0;
-let skillsPerPage;
-let totalPages;
-
-function updatePagination() {
-  // Set skills per page based on screen width
-  if (window.innerWidth < 768) {
-    skillsPerPage = 1; // mobile
-  } else {
-    skillsPerPage = skills.length; // show all for desktop/tablet
-  }
-
-  totalPages = Math.ceil(skills.length / skillsPerPage);
-}
+const totalPages = Math.ceil(skills.length / skillsPerPage);
 
 function showSkills() {
   skills.forEach((skill, i) => {
@@ -45,52 +45,28 @@ function showSkills() {
       i >= currentIndex * skillsPerPage &&
       i < (currentIndex + 1) * skillsPerPage
         ? "flex"
-        : window.innerWidth < 768
-          ? "none"
-          : "flex"; // keep them visible on desktop
+        : "none";
   });
 }
 
-// Button handlers
 document.getElementById("prevBtn").addEventListener("click", () => {
-  if (window.innerWidth < 768) {
-    currentIndex = (currentIndex - 1 + totalPages) % totalPages;
-    showSkills();
-  }
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  if (window.innerWidth < 768) {
-    currentIndex = (currentIndex + 1) % totalPages;
-    showSkills();
-  }
-});
-
-// Run on load + resize
-updatePagination();
-showSkills();
-
-window.addEventListener("resize", () => {
-  updatePagination();
-  currentIndex = 0;
+  currentIndex = (currentIndex - 1 + totalPages) % totalPages;
   showSkills();
 });
 
-// last change point
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % totalPages;
+  showSkills();
+});
 
+showSkills();
 // Blog Section
 window.showBloggerPosts = function (data) {
   const posts = (data.feed.entry || []).reverse(); // newest first
   let currentIndex = 0;
-  let postsPerPage;
-
-  function updatePostsPerPage() {
-    postsPerPage = window.innerWidth < 768 ? 1 : 3; // 👈 mobile = 1, desktop/tablet = 3
-  }
+  const postsPerPage = 3;
 
   function renderPosts() {
-    updatePostsPerPage(); // update dynamically on each render
-
     let html = "";
     const visiblePosts = posts.slice(currentIndex, currentIndex + postsPerPage);
 
@@ -113,7 +89,7 @@ window.showBloggerPosts = function (data) {
 
       html += `<a href="${link}" target="_blank">
         <article
-  class="shadow-lg flex flex-col h-[500px] w-5/6 md:w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right mx-auto"
+  class="shadow-lg flex flex-col h-[500px] w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
 >
   <!-- image -->
   <img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />
@@ -177,12 +153,6 @@ window.showBloggerPosts = function (data) {
 
   // Initial render
   renderPosts();
-
-  // Re-render on window resize to adapt posts per page
-  window.addEventListener("resize", () => {
-    currentIndex = 0; // reset to first page when resizing
-    renderPosts();
-  });
 };
 
 // Footer
@@ -278,4 +248,3 @@ renderPosts = ((origRender) => {
     translateContent(lang === "ar" ? ar : en);
   };
 })(renderPosts);
-// Last checkpoint
