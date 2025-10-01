@@ -256,7 +256,7 @@
             <div class="flex justify-center space-x-4">
               <a
                 href="#projects"
-                class="bg-secondary hover:bg-opacity-90 hover:text-primary rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:font-bold"
+                class="bg-secondary hover:bg-opacity-90 hover:text-primary invisible rounded-lg px-6 py-3 font-medium text-white transition-all duration-300 hover:font-bold"
                 >View My Work</a
               >
               <a
@@ -278,7 +278,7 @@
             <div class="flex justify-center space-x-4">
               <a
                 href="#projects"
-                class="bg-secondary hover:bg-opacity-90 rounded-lg px-6 py-3 font-medium text-white transition-all duration-300"
+                class="bg-secondary hover:bg-opacity-90 invisible rounded-lg px-6 py-3 font-medium text-white transition-all duration-300"
                 >شاهد أعمالي</a
               >
               <a
@@ -342,10 +342,45 @@
         </div>
         <div class="text-center">
           <div data-content="tab1" id="tab-content-en-1">
-            <p class="text-gray-700">
-              This is content for <strong>Lawfirms Tab</strong>.
+            <p class="mb-4 text-gray-700">
+              This is a demo for a <strong>Lawfirms website</strong>.
             </p>
+
+            <!-- Desktop Video -->
+            <div class="mx-auto hidden w-full max-w-2xl md:block">
+              <video
+                class="w-full rounded-lg shadow-lg"
+                controls
+                autoplay
+                muted
+                loop
+              >
+                <source
+                  src="/src/assets/desktop-lawfirm-demo.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <!-- Mobile Video -->
+            <div class="mx-auto block w-full max-w-md md:hidden">
+              <video
+                class="w-full rounded-lg shadow-lg"
+                controls
+                autoplay
+                muted
+                loop
+              >
+                <source
+                  src="/src/assets/mobile-lawfirm-demo.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
+
           <div data-content="tab2" class="hidden" id="tab-content-en-2">
             <p class="text-gray-700">
               This is content for <strong>Restraunts Tab</strong>.
@@ -358,9 +393,43 @@
           </div>
 
           <div data-content="tab1" class="hidden" id="tab-content-ar-1">
-            <p class="text-gray-700">
-              هذا محتوى <strong>تبويب المحاماة</strong>.
+            <p class="mb-2 text-gray-700">
+              هذا موقع تجريبي ل <strong> المحاماة</strong>.
             </p>
+
+            <!-- Desktop Video -->
+            <div class="mx-auto hidden w-full max-w-2xl md:block">
+              <video
+                class="w-full rounded-lg shadow-lg"
+                controls
+                autoplay
+                muted
+                loop
+              >
+                <source
+                  src="/src/assets/desktop-lawfirm-demo.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <!-- Mobile Video -->
+            <div class="mx-auto block w-full max-w-md md:hidden">
+              <video
+                class="w-full rounded-lg shadow-lg"
+                controls
+                autoplay
+                muted
+                loop
+              >
+                <source
+                  src="/src/assets/mobile-lawfirm-demo.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
           <div data-content="tab2" class="hidden" id="tab-content-ar-2">
             <p class="text-gray-700">
@@ -673,7 +742,7 @@
           <!-- Posts container -->
           <ul
             id="blog-posts"
-            class="block h-3/4 w-full justify-around overflow-hidden py-3 md:flex"
+            class="flex h-3/4 w-full justify-center overflow-hidden py-3 md:space-x-10"
           ></ul>
 
           <!-- Next Button (right side of posts container) -->
@@ -831,7 +900,6 @@
     <script src="src\js\main.js"></script>
     <!-- src\js\main.js -->
     <script>
-
       // Language switcher logic
       const langSelector = document.getElementById("lang-selector");
       const langSelectorMobile = document.getElementById(
@@ -887,10 +955,14 @@
         document.getElementById("tab-btn-ar-3").style.display =
           lang === "ar" ? "inline-block" : "none";
         // Tabs content - show first tab content for each language
-        document.getElementById("tab-content-en-1").classList.toggle("hidden", lang !== "en");
+        document
+          .getElementById("tab-content-en-1")
+          .classList.toggle("hidden", lang !== "en");
         document.getElementById("tab-content-en-2").classList.add("hidden");
         document.getElementById("tab-content-en-3").classList.add("hidden");
-        document.getElementById("tab-content-ar-1").classList.toggle("hidden", lang !== "ar");
+        document
+          .getElementById("tab-content-ar-1")
+          .classList.toggle("hidden", lang !== "ar");
         document.getElementById("tab-content-ar-2").classList.add("hidden");
         document.getElementById("tab-content-ar-3").classList.add("hidden");
         // Skills
@@ -1011,4 +1083,4 @@
     <script src="https://salehblhmr.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=showBloggerPosts"></script>
   </body>
 </html>
-<!-- changes -->
+<!-- Latest change -->

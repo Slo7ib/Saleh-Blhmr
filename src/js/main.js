@@ -62,12 +62,30 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 showSkills();
 // Blog Section
 window.showBloggerPosts = function (data) {
+  console.log('Blog data received:', data); // Debug log
   const posts = (data.feed.entry || []).reverse(); // newest first
   let currentIndex = 0;
-  const postsPerPage = 3;
+  
+  // Mark that real blog posts are being loaded
+  window.bloggerPostsLoaded = true;
+  
+  // If no posts are available, show a fallback message
+  if (posts.length === 0) {
+    document.getElementById("blog-posts").innerHTML = `
+      <div class="flex items-center justify-center w-full h-64">
+        <p class="text-white text-xl">No blog posts available at the moment.</p>
+      </div>
+    `;
+    return;
+  }
+
+  function getPostsPerPage() {
+    return window.innerWidth < 768 ? 1 : 3; // 1 post on mobile, 3 on desktop
+  }
 
   function renderPosts() {
     let html = "";
+    const postsPerPage = getPostsPerPage();
     const visiblePosts = posts.slice(currentIndex, currentIndex + postsPerPage);
 
     visiblePosts.forEach((post) => {
@@ -87,9 +105,12 @@ window.showBloggerPosts = function (data) {
       const author = post.author?.[0]?.name?.$t || "Unknown Author";
       const publishedDate = new Date(post.published.$t).toDateString();
 
+      // Responsive width classes
+      const widthClass = window.innerWidth < 768 ? "w-11/12 max-w-sm" : "w-1/4";
+
       html += `<a href="${link}" target="_blank">
         <article
-  class="shadow-lg flex flex-col h-[500px] w-1/4 rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
+  class="shadow-lg flex flex-col h-[500px] ${widthClass} rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
 >
   <!-- image -->
   <img class="rounded-2xl w-full h-56" src="${imageUrl}" alt="${title}" />
@@ -126,15 +147,17 @@ window.showBloggerPosts = function (data) {
     document.getElementById("blog-posts").innerHTML = html;
 
     // Enable/disable arrows
+    const currentPostsPerPage = getPostsPerPage();
     document.getElementById("blogPrevBtn").disabled = currentIndex <= 0;
     document.getElementById("blogNextBtn").disabled =
-      currentIndex + postsPerPage >= posts.length;
+      currentIndex + currentPostsPerPage >= posts.length;
   }
 
   // Button actions
   document.getElementById("blogPrevBtn").onclick = function () {
-    if (currentIndex - postsPerPage >= 0) {
-      currentIndex -= postsPerPage;
+    const currentPostsPerPage = getPostsPerPage();
+    if (currentIndex - currentPostsPerPage >= 0) {
+      currentIndex -= currentPostsPerPage;
     } else {
       currentIndex = 0;
     }
@@ -142,18 +165,168 @@ window.showBloggerPosts = function (data) {
   };
 
   document.getElementById("blogNextBtn").onclick = function () {
-    if (currentIndex + postsPerPage < posts.length) {
-      currentIndex += postsPerPage;
+    const currentPostsPerPage = getPostsPerPage();
+    if (currentIndex + currentPostsPerPage < posts.length) {
+      currentIndex += currentPostsPerPage;
     } else {
-      currentIndex = posts.length - postsPerPage;
+      currentIndex = posts.length - currentPostsPerPage;
       if (currentIndex < 0) currentIndex = 0;
     }
     renderPosts();
   };
 
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    renderPosts();
+  });
+
   // Initial render
   renderPosts();
 };
+
+// Fallback function in case Blogger feed doesn't load
+function showFallbackBlogPosts() {
+  console.log('Showing fallback blog posts');
+  
+  // Sample blog posts data
+  const samplePosts = [
+    {
+      title: "Welcome to My Blog",
+      content: "This is a sample blog post. The actual blog posts will be loaded from Blogger once the feed is available.",
+      author: "Saleh Blhmr",
+      publishedDate: new Date().toDateString(),
+      link: "#",
+      imageUrl: "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Sample+Post"
+    },
+    {
+      title: "Web Development Tips",
+      content: "Here are some useful tips for web development that I've learned over the years. Stay tuned for more content!",
+      author: "Saleh Blhmr", 
+      publishedDate: new Date(Date.now() - 86400000).toDateString(),
+      link: "#",
+      imageUrl: "https://via.placeholder.com/400x300/059669/FFFFFF?text=Web+Dev"
+    },
+    {
+      title: "Building Responsive Websites",
+      content: "Learn how to create beautiful, responsive websites that work perfectly on all devices. Mobile-first approach is key!",
+      author: "Saleh Blhmr",
+      publishedDate: new Date(Date.now() - 172800000).toDateString(), 
+      link: "#",
+      imageUrl: "https://via.placeholder.com/400x300/DC2626/FFFFFF?text=Responsive"
+    }
+  ];
+  
+  let currentIndex = 0;
+  
+  function getPostsPerPage() {
+    return window.innerWidth < 768 ? 1 : 3;
+  }
+  
+  function renderSamplePosts() {
+    let html = "";
+    const postsPerPage = getPostsPerPage();
+    const visiblePosts = samplePosts.slice(currentIndex, currentIndex + postsPerPage);
+    
+    visiblePosts.forEach((post) => {
+      const widthClass = window.innerWidth < 768 ? "w-11/12 max-w-sm" : "w-1/4";
+      
+      html += `<a href="${post.link}" target="_blank">
+        <article
+  class="shadow-lg flex flex-col h-[500px] ${widthClass} rounded-3xl border border-white/20 bg-white/10 p-3 font-sans backdrop-blur-md backdrop-filter text-right"
+>
+  <!-- image -->
+  <img class="rounded-2xl w-full h-56" src="${post.imageUrl}" alt="${post.title}" />
+
+  <!-- title -->
+  <h1
+    class="my-6 font-serif text-2xl font-extrabold tracking-wide text-white capitalize"
+  >
+    <a href="${post.link}" target="_blank">${post.title}</a>
+  </h1>
+
+  <!-- excerpt -->
+  <p class="line-clamp-3 text-sm text-ellipsis text-white">
+    ${post.content.substring(0, 150)}...
+  </p>
+
+  <!-- author section pinned at bottom -->
+  <div class="flex flex-row-reverse items-center gap-x-3 mt-auto">
+    <div
+      class="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
+    >
+      <span class="font-medium text-gray-600 dark:text-gray-300">${post.author[0] || "?"}</span>
+    </div>
+    <div class="text-secondary">
+      <h2 class="text-lg font-semibold">${post.author}</h2>
+      <h4 class="text-xs">Posted on ${post.publishedDate}</h4>
+    </div>
+  </div>
+</article>
+</a>
+      `;
+    });
+    
+    document.getElementById("blog-posts").innerHTML = html;
+    
+    // Enable/disable arrows
+    const currentPostsPerPage = getPostsPerPage();
+    document.getElementById("blogPrevBtn").disabled = currentIndex <= 0;
+    document.getElementById("blogNextBtn").disabled = currentIndex + currentPostsPerPage >= samplePosts.length;
+  }
+  
+  // Button actions for sample posts
+  document.getElementById("blogPrevBtn").onclick = function () {
+    const currentPostsPerPage = getPostsPerPage();
+    if (currentIndex - currentPostsPerPage >= 0) {
+      currentIndex -= currentPostsPerPage;
+    } else {
+      currentIndex = 0;
+    }
+    renderSamplePosts();
+  };
+
+  document.getElementById("blogNextBtn").onclick = function () {
+    const currentPostsPerPage = getPostsPerPage();
+    if (currentIndex + currentPostsPerPage < samplePosts.length) {
+      currentIndex += currentPostsPerPage;
+    } else {
+      currentIndex = samplePosts.length - currentPostsPerPage;
+      if (currentIndex < 0) currentIndex = 0;
+    }
+    renderSamplePosts();
+  };
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    renderSamplePosts();
+  });
+  
+  // Initial render
+  renderSamplePosts();
+}
+
+// Set a timeout to show fallback if Blogger feed doesn't load within 5 seconds
+setTimeout(() => {
+  if (!window.bloggerPostsLoaded) {
+    const blogPostsContainer = document.getElementById("blog-posts");
+    if (!blogPostsContainer || !blogPostsContainer.innerHTML.trim()) {
+      showFallbackBlogPosts();
+    }
+  }
+}, 5000);
+
+// Also check immediately when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait a bit for Blogger feed to load first
+  setTimeout(() => {
+    if (!window.bloggerPostsLoaded) {
+      const blogPostsContainer = document.getElementById("blog-posts");
+      if (!blogPostsContainer || !blogPostsContainer.innerHTML.trim()) {
+        showFallbackBlogPosts();
+      }
+    }
+  }, 2000);
+});
 
 // Footer
 const currentYear = new Date().getFullYear();
@@ -211,7 +384,7 @@ function setLanguage(lang) {
 setLanguage(en);
 
 // Language switcher event
-document.getElementById("language-selector").addEventListener("change", (e) => {
+document.getElementById("lang-selector").addEventListener("change", (e) => {
   const lang = e.target.value === "ar" ? ar : en;
   setLanguage(lang);
 });
